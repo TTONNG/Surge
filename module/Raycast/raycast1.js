@@ -21,9 +21,19 @@ parsedBody.avatar = "https://svgl.app/library/raycast.svg";
 parsedBody.handle = "raycast";
 parsedBody.id = "45ec6a50-8cbe-4e3e-b0a8-e63355a3428b";
 parsedBody.username = "raycast";
-parsedBody.name = "raycast";
-parsedBody.subscription.interval = "year";
+parsedBody.subscription= {
+    "id": "sub_1OxZKbGdsJ8jfw5XKdbtvQ8S",
+    "status": "active",
+    "interval": "year",
+    "running": true,
+    "has_better_ai": true,
+    "current_period_end": 1913897013,
+    "can_update": true,
+    "can_cancel": true,
+    "can_update_interval": false,
+    "can_upgrade_to_better_ai": false,
+    "can_downgrade_from_better_ai": true
+  };
 parsedBody.publishing_bot = true;
-parsedBody.subscription.current_period_end = 1913897013;
 modifyResponseBody = JSON.stringify(parsedBody);
 $done({ body: modifyResponseBody });
