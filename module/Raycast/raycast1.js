@@ -22,7 +22,6 @@ parsedBody.handle = "raycast";
 parsedBody.id = "45ec6a50-8cbe-4e3e-b0a8-e63355a3428b";
 parsedBody.username = "raycast";
 parsedBody.name = "raycast";
-parsedBody.subscription.status = "active";
 parsedBody.subscription.interval = "year";
 parsedBody.publishing_bot = true;
 parsedBody.subscription.current_period_end = 1913897013;
