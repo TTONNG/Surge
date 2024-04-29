@@ -1,11 +1,296 @@
-let body = JSON.parse($response.body);
+let response = {
+    status: 200,
+    headers: $response.headers,  // preserve original headers
+    body: JSON.stringify({
+        models: [
+		{
+			"id": "openai-gpt-3.5-turbo-instruct",
+			"name": "GPT-3.5 Turbo Instruct",
+			"description": "",
+			"availability": "deprecated",
+			"status": "deprecated",
+			"features": ["commands", "api", "emoji_search"],
+			"suggestions": [],
+			"capabilities": {},
+			"abilities": {},
+			"in_better_ai_subscription": true,
+			"model": "gpt-3.5-turbo-instruct",
+			"provider": "openai",
+			"provider_name": "OpenAI",
+			"provider_brand": "openai",
+			"speed": 3,
+			"intelligence": 3,
+			"requires_better_ai": true,
+			"context": 4
+		},
+		{
+			"id": "openai-gpt-3.5-turbo",
+			"name": "GPT-3.5 Turbo",
+			"description": "GPT-3.5 Turbo is OpenAI’s fastest model, making it ideal for tasks that require quick response times with basic language processing capabilities.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": ["chat", "quick_ai", "commands"],
+			"capabilities": {
+				"web_search": "full",
+				"image_generation": "full"
+			},
+			"abilities": {
+				"web_search": { "toggleable": true },
+				"image_generation": { "model": "dall-e-2" }
+			},
+			"in_better_ai_subscription": true,
+			"model": "gpt-3.5-turbo",
+			"provider": "openai",
+			"provider_name": "OpenAI",
+			"provider_brand": "openai",
+			"speed": 3,
+			"intelligence": 3,
+			"requires_better_ai": true,
+			"context": 16
+		},
+		{
+			"id": "openai-gpt-4",
+			"name": "GPT-4",
+			"description": "GPT-4 is OpenAI’s most capable model with broad general knowledge, allowing it to follow complex instructions and solve difficult problems.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": ["chat"],
+			"capabilities": {
+				"web_search": "full",
+				"image_generation": "full"
+			},
+			"abilities": {
+				"web_search": { "toggleable": true },
+				"image_generation": { "model": "dall-e-3" }
+			},
+			"in_better_ai_subscription": true,
+			"model": "gpt-4",
+			"provider": "openai",
+			"provider_name": "OpenAI",
+			"provider_brand": "openai",
+			"speed": 1,
+			"intelligence": 4,
+			"requires_better_ai": true,
+			"context": 8
+		},
+		{
+			"id": "openai-gpt-4-turbo",
+			"name": "GPT-4 Turbo",
+			"description": "GPT-4 Turbo from OpenAI has a big context window that fits hundreds of pages of text, making it a great choice for workloads that involve longer prompts.\n",
+			"availability": "public",
+			"status": "beta",
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": [],
+			"capabilities": {
+				"web_search": "full",
+				"image_generation": "full"
+			},
+			"abilities": {
+				"web_search": { "toggleable": true },
+				"image_generation": { "model": "dall-e-3" }
+			},
+			"in_better_ai_subscription": true,
+			"model": "gpt-4-turbo",
+			"provider": "openai",
+			"provider_name": "OpenAI",
+			"provider_brand": "openai",
+			"speed": 2,
+			"intelligence": 5,
+			"requires_better_ai": true,
+			"context": 127
+		},
+		{
+			"id": "anthropic-claude-haiku",
+			"name": "Claude 3 Haiku",
+			"description": "Claude 3 Haiku is Anthropic's fastest model, with a large context window that makes it ideal for analyzing code, documents, or large amounts of text.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api"],
+			"suggestions": ["quick_ai"],
+			"capabilities": { "web_search": "full" },
+			"abilities": { "web_search": { "toggleable": true } },
+			"in_better_ai_subscription": true,
+			"model": "claude-3-haiku-20240307",
+			"provider": "anthropic",
+			"provider_name": "Anthropic",
+			"provider_brand": "anthropic",
+			"speed": 3,
+			"intelligence": 3,
+			"requires_better_ai": true,
+			"context": 200
+		},
+		{
+			"id": "anthropic-claude-sonnet",
+			"name": "Claude 3 Sonnet",
+			"description": "Claude 3 Sonnet from Anthropic strikes a balance between speed and intelligence, making it an ideal assistant for daily tasks like coding and copywriting.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api"],
+			"suggestions": ["commands"],
+			"capabilities": { "web_search": "full" },
+			"abilities": { "web_search": { "toggleable": true } },
+			"in_better_ai_subscription": true,
+			"model": "claude-3-sonnet-20240229",
+			"provider": "anthropic",
+			"provider_name": "Anthropic",
+			"provider_brand": "anthropic",
+			"speed": 2,
+			"intelligence": 4,
+			"requires_better_ai": true,
+			"context": 200
+		},
+		{
+			"id": "anthropic-claude-opus",
+			"name": "Claude 3 Opus",
+			"description": "Claude 3 Opus is Anthropic's most intelligent model, with best-in-market performance on highly complex tasks. It stands out for remarkable fluency.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api"],
+			"suggestions": ["chat"],
+			"capabilities": { "web_search": "full" },
+			"abilities": { "web_search": { "toggleable": true } },
+			"in_better_ai_subscription": true,
+			"model": "claude-3-opus-20240229",
+			"provider": "anthropic",
+			"provider_name": "Anthropic",
+			"provider_brand": "anthropic",
+			"speed": 1,
+			"intelligence": 5,
+			"requires_better_ai": true,
+			"context": 200
+		},
+		{
+			"id": "perplexity-sonar-small-online",
+			"name": "Sonar Small",
+			"description": "Perplexity's Sonar Small is built for speed. It quickly gives you helpful answers using the latest internet knowledge while minimizing hallucinations.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": ["quick_ai"],
+			"capabilities": { "web_search": "always_on" },
+			"abilities": { "web_search": { "toggleable": false } },
+			"in_better_ai_subscription": true,
+			"model": "sonar-small-online",
+			"provider": "perplexity",
+			"provider_name": "Perplexity",
+			"provider_brand": "perplexity",
+			"speed": 3,
+			"intelligence": 1,
+			"requires_better_ai": true,
+			"context": 12
+		},
+		{
+			"id": "perplexity-sonar-medium-online",
+			"name": "Sonar Medium",
+			"description": "Perplexity's most advanced model, Sonar Medium, can handle complex questions. It considers current web knowledge to provide well-reasoned, in-depth answers.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": ["quick_ai"],
+			"capabilities": { "web_search": "always_on" },
+			"abilities": { "web_search": { "toggleable": false } },
+			"in_better_ai_subscription": true,
+			"model": "sonar-medium-online",
+			"provider": "perplexity",
+			"provider_name": "Perplexity",
+			"provider_brand": "perplexity",
+			"speed": 2,
+			"intelligence": 2,
+			"requires_better_ai": true,
+			"context": 12
+		},
+		{
+			"id": "groq-llama2-70b-4096",
+			"name": "Llama 2 70B",
+			"description": "Llama 2 70B from Meta is a popular open-source model optimized for dialogues, which can serve as a tool for various text-related tasks. Powered by Groq.\n",
+			"availability": "deprecated",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": [],
+			"capabilities": {},
+			"abilities": {},
+			"in_better_ai_subscription": true,
+			"model": "llama2-70b-4096",
+			"provider": "groq",
+			"provider_name": "Meta",
+			"provider_brand": "meta",
+			"speed": 4,
+			"intelligence": 2,
+			"requires_better_ai": true,
+			"context": 4
+		},
+		{
+			"id": "groq-llama3-70b-8192",
+			"name": "Llama 3 70B",
+			"description": "Llama 3 70B from Meta is the most capable openly available LLM which can serve as a tool for various text-related tasks. Powered by Groq.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": ["commands"],
+			"capabilities": {},
+			"abilities": {},
+			"in_better_ai_subscription": true,
+			"model": "llama3-70b-8192",
+			"provider": "groq",
+			"provider_name": "Meta",
+			"provider_brand": "meta",
+			"speed": 5,
+			"intelligence": 4,
+			"requires_better_ai": true,
+			"context": 8
+		},
+		{
+			"id": "perplexity-codellama-70b-instruct",
+			"name": "Code Llama 70B",
+			"description": "Code Llama 70B from Meta is an open-source model designed to enhance and speed up coding tasks, making developer workflows faster and more efficient.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": ["commands"],
+			"capabilities": {},
+			"abilities": {},
+			"in_better_ai_subscription": true,
+			"model": "codellama-70b-instruct",
+			"provider": "perplexity",
+			"provider_name": "Meta",
+			"provider_brand": "meta",
+			"speed": 2,
+			"intelligence": 3,
+			"requires_better_ai": true,
+			"context": 16
+		},
+		{
+			"id": "groq-mixtral-8x7b-32768",
+			"name": "Mixtral 8x7B",
+			"description": "Mixtral 8x7B from Mistral is an open-source model that demonstrates high performance in generating code and text at an impressive speed. Powered by Groq.\n",
+			"availability": "public",
+			"status": null,
+			"features": ["chat", "quick_ai", "commands", "api", "emoji_search"],
+			"suggestions": [],
+			"capabilities": {},
+			"abilities": {},
+			"in_better_ai_subscription": true,
+			"model": "mixtral-8x7b-32768",
+			"provider": "groq",
+			"provider_name": "Mistral",
+			"provider_brand": "mistral",
+			"speed": 5,
+			"intelligence": 3,
+			"requires_better_ai": true,
+			"context": 32
+		}
+	],
+	"default_models": {
+		"chat": "openai-gpt-3.5-turbo",
+		"quick_ai": "openai-gpt-3.5-turbo",
+		"commands": "openai-gpt-3.5-turbo-instruct",
+		"api": "openai-gpt-3.5-turbo-instruct",
+		"emoji_search": "openai-gpt-3.5-turbo-instruct"
+	}
+})
+};
 
-// Ensure `models` array is present in the body
-if (body.models) {
-    body.models.forEach((model) => {
-        model.in_better_ai_subscription = true;
-        model.requires_better_ai = true;
-    });
-}
-
-$done({ body: JSON.stringify(body) });
+// Call to the $done function to complete the modified HTTP response handling
+$done(response);
