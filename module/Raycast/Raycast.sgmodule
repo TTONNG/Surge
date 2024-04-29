@@ -7,7 +7,7 @@ Raycast = type=http-response,pattern=^https:\/\/backend.raycast.com\/api\/v1\/me
 
 Raycast1 = type=http-response,pattern=^https:\/\/backend.raycast.com\/api\/v1\/ai\/models$,requires-body=1,max-size=0,debug=0,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/Raycast/raycast2.js
 
-Raycast2 = type=http-response,pattern=^https:\/\/api.stripe.com\/v1\/prices\?active=true\&product=.*currency=.*$,requires-body=1,max-size=0,debug=0,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/Raycast/raycast3.js
+Raycast2 = type=http-response,pattern=^https:\/\/api.stripe.com\/v1\/prices\?active=true\&product=.*currency=.*,requires-body=1,max-size=0,debug=0,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/Raycast/raycast3.js
 
 [MITM]
 hostname = %APPEND% backend.raycast.com, api.stripe.com
