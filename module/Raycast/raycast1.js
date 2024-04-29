@@ -12,7 +12,9 @@ const trueFields = [
 ];
 
 trueFields.forEach(field => {
-    parsedBody[field] = true;
+    if (parsedBody.hasOwnProperty(field)) {
+        parsedBody[field] = true;
+    }
 });
 
 // Specific field updates
