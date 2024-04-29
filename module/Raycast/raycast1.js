@@ -1,3 +1,20 @@
+let modifyResponseBody = $response.body;
+
+// Check if response body is not undefined and not empty
+if (!modifyResponseBody || modifyResponseBody.trim() === "") {
+    $done(); // Exit if the body is empty or undefined
+    return;
+}
+
+let parsedBody;
+try {
+    parsedBody = JSON.parse(modifyResponseBody);
+} catch (err) {
+    console.log("Error parsing JSON: " + err.message);
+    $done(); // Exit if there is a parsing error
+    return;
+}
+
 // Fields that should be universally set to true
 const trueFields = [
     'admin', 'eligible_for_ai_beta_features', 'can_use_referral_codes',
