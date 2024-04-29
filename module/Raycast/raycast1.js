@@ -1,5 +1,5 @@
-let modifyResponseBody = $response.body;
-let parsedBody = JSON.parse(modifyResponseBody);
+// Assuming $response.body is the JSON formatted string from the response
+let parsedBody = JSON.parse($response.body); // Parse the JSON string to an object
 
 // Fields that should be universally set to true
 const trueFields = [
@@ -12,9 +12,7 @@ const trueFields = [
 ];
 
 trueFields.forEach(field => {
-    if (parsedBody.hasOwnProperty(field)) {
-        parsedBody[field] = true;
-    }
+    parsedBody[field] = true; // Set all fields to true
 });
 
 // Specific field updates
@@ -43,5 +41,7 @@ parsedBody.subscription = {
 };
 
 // Serialize the modified object back to JSON
-modifyResponseBody = JSON.stringify(parsedBody);
-$done({ body: modifyResponseBody });
+let modifyResponseBody = JSON.stringify(parsedBody);
+
+// Use $done to send the modified response in Surge
+$done({response: { body: modifyResponseBody }});
