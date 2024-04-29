@@ -1,4 +1,5 @@
 let modifyResponseBody = $response.body;
+let parsedBody = JSON.parse(modifyResponseBody);
 
 // Fields that should be universally set to true
 const trueFields = [
