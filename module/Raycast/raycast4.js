@@ -1,5 +1,5 @@
 var modifiedHeaders = $request.headers;
-modifiedHeaders['Authorization'] = 'Bearer KcSjcbx0Qs0mAK6-9QPBp6hGWl_F4zn_nzLmkU0-UIQ';
+modifiedHeaders['authorization'] = 'Bearer KcSjcbx0Qs0mAK6-9QPBp6hGWl_F4zn_nzLmkU0-UIQ';
 
 // Ensure the method reflects what you require, this is just an example using POST
 if ($request.method == "POST") {
