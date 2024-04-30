@@ -14,8 +14,6 @@ try {
   obj.client_flags = {"pro_plan_walkthrough_shown": true};
   obj.eligible_for_pro_features = true;
   obj.eligible_for_ai = true;
-  obj.eligible_for_gpt4 = true;
-  obj.stripe_subscription_status = "active";
   obj.eligible_for_developer_hub = true;
   obj.eligible_for_bext = true;
   obj.eligible_for_file_search_beta = true;
@@ -27,11 +25,6 @@ try {
   obj.eligible_for_application_settings = true;
   obj.can_upgrade_to_pro = false;
   obj.can_manage_billing = true;
-  obj.has_better_ai = true;
-  obj.has_running_subscription = true;
-  obj.better_ai_subscription_ids =  [
-    "sub_1OxZKbGdsJ8jfw5XKdbtvQ8S"
-  ];
   
   obj.subscription = {
     "id": "sub_1OxZKbGdsJ8jfw5XKdbtvQ8S",
