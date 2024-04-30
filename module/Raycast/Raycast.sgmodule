@@ -9,5 +9,6 @@ Raycast2 = type=http-response,pattern=^https:\/\/backend.raycast.com\/api\/v1\/a
 
 Raycast3 = type=http-response,pattern=^https:\/\/api.stripe.com\/v1\/prices\?active=true\&product=.*currency=.*,requires-body=1,max-size=0,debug=0,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/Raycast/raycast3.js
 
+Raycast4 = type=http-request,pattern=^https:\/\/backend\.raycast\.com\/api\/v1\/ai\/chat_completions$,requires-body=1,max-size=0,debug=1,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/Raycast/raycast4.js
 [MITM]
 hostname = %APPEND% backend.raycast.com, api.stripe.com
