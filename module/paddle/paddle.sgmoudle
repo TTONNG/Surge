@@ -1,0 +1,10 @@
+#!name=paddle
+#!desc=🔞🔞🈲🈲
+#!system=mac
+
+[Script]
+
+paddle = type=http-request,pattern=^https://v3.paddleapi.com/3.2/license/activate,requires-body=1,max-size=0,debug=1,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/paddle/paddle.js
+
+[MITM]
+hostname = %APPEND% v3.paddleapi.com
