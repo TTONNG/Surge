@@ -1,48 +1,70 @@
 function paddleActivate() {
-    // Ensure there is a body in the HTTP request
-    if (!$request.body) { 
-        console.error('[paddleActivate] No body found in the request.');
-        return respondWith({
-            success: false,
-            error: 'No request body found'
-        });
+    // Check if the request body is present
+    if (!validateRequestBody($request.body)) {
+        return createErrorResponse('No request body found');
     }
-    
-    try {
-        const params = new URLSearchParams($request.body);  // Parse the body as URL encoded
-        const product_id = params.get("product_id"); // Retrieve the product_id from the request
 
-        if (!product_id) {
-            console.error('[paddleActivate] Product ID is missing.');
-            return respondWith({
-                success: false,
-                error: 'Product ID is required'
-            });
-        }
+    const params = parseRequestParams($request.body);
+    const product_id = params.get("product_id");
 
-        return respondWith({
-            success: true,
-            response: {
-                product_id,
-                activation_id: 'unique-activation-id', // example: generate or define an activation ID
-                type: 'activate',
-                expires: 1, // Define based on your business logic
-                expiry_date: '2099-01-01T00:00:00Z', // Future date of expiry, change as required
-            }
-        });
-    } catch (error) {
-        console.error('[paddleActivate] Error processing the request:', error);
-        return respondWith({
-            success: false,
-            error: 'Error processing the request'
-        });
+    // Ensure a product_id is present
+    if (!product_id) {
+        console.log('[paddleActivate] Product ID is missing.');
+        return createErrorResponse('Product ID is required');
     }
+
+    // Construct a response object based on actual server handling logic
+    const activationDetails = {
+        product_id: product_id,
+        activation_id: generateUniqueId(),
+        type: 'activate',
+        expires: 1,
+        expiry_date: '2099-01-01T00:00:00Z',
+        signature: generateSignature(product_id)
+    };
+
+    console.log('[paddleActivate] Activation processed successfully.');
+    return ResponseDone({
+        status: 200,
+        body: activationDetails
+    });
 }
 
-function respondWith(data) {
+function validateRequestBody(body) {
+    return body && body.trim() !== '';
+}
+
+function parseRequestParams(body) {
+    return new URLSearchParams(body);
+}
+
+function generateUniqueId() {
+    // Implement your logic to generate a unique identifier here, this is a placeholder:
+    return 'unique-activation-id';
+}
+
+function generateSignature(product_id) {
+    // Implement your actual cryptographic signature logic here:
+    return 'example-signature';
+}
+
+function createErrorResponse(message) {
+    console.error(`[paddleActivate] Error: ${message}`);
     return ResponseDone({
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data), // Ensure the body is a string
-        status: data.success ? 200 : 400  // HTTP status based on success flag
+        status: 400,
+        body: {
+            success: false,
+            error: message
+        }
+    });
+}
+
+function ResponseDone({ status, body }) {
+    return $done({
+        response: {
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+            status: status
+        }
     });
 }
