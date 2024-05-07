@@ -39,36 +39,3 @@ function paddleActivate() {
     });
 }
 
-/**
- * Paddle verification
- * @url https://v3.paddleapi.com/3.2/license/verify
- */
-function paddleVerify() {
-    return ResponseDone({
-        body: {
-            success: true,
-            response: {
-                type: 'personal',
-                expires: 1,
-                expiry_date: 1999999999999,
-            },
-            signature: '',
-        },
-    });
-}
-
-function ResponseDone(props) {
-    if (props.body){
-        props.body = JSON.stringify(props.body);
-    }
-    return {
-        response: {
-            ...props,
-        },
-    };
-}
-
-// If used within a framework that requires a done callback
-if (typeof $done !== 'undefined') {
-    $done({ response: ResponseDone({/* example props here */}) });
-}
