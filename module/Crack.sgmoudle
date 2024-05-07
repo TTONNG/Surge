@@ -6,7 +6,7 @@
 
 [Script]
 
-paddleActivate = type=http-request,pattern=^https://v3.paddleapi.com/3.2/license/activate,requires-body=1,max-size=0,debug=1,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/paddle/paddleActivate.js
+paddleActivate = type=http-response,pattern=^https://v3.paddleapi.com/3.2/license/activate,requires-body=1,max-size=0,debug=1,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/paddle/paddleActivate.js
 paddleVerify = type=http-request,pattern=^https://v3.paddleapi.com/3.2/license/Verify,requires-body=1,max-size=0,debug=1,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/paddle/paddleVerify.js
 Raycast1 = type=http-response,pattern=^https:\/\/backend.raycast.com\/api\/v1\/me$,requires-body=1,max-size=0,debug=0,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/Raycast/raycast1.js
 CleanShotX = type=http-response,pattern=^https:\/\/api.cleanshot\.cloud\/v1\/user$,requires-body=1,max-size=0,debug=0,engine=jsc,script-path=https://raw.githubusercontent.com/TTONNG/Surge/main/module/CleanShotX/CleanShotX.js
