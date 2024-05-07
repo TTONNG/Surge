@@ -1,41 +1,48 @@
-/**
- * Paddle activation
- * @url https://v3.paddleapi.com/3.2/license/activate
- */
 function paddleActivate() {
-    const body = $request.body;
-    if (!body) {
-        return ResponseDone({
-            headers: {
-                'Content-Type': 'application/json; charset=UTF-8',
-            },
-            body: {
-                success: false,
-                response: {
-                    error: '[Surge] Activator: No body found',
-                },
-            },
+    // Ensure there is a body in the HTTP request
+    if (!$request.body) { 
+        console.error('[paddleActivate] No body found in the request.');
+        return respondWith({
+            success: false,
+            error: 'No request body found'
         });
     }
     
-    const params = new URLSearchParams(body);
-    const product_id = params.get("product_id") || '';
+    try {
+        const params = new URLSearchParams($request.body);  // Parse the body as URL encoded
+        const product_id = params.get("product_id"); // Retrieve the product_id from the request
 
-    return ResponseDone({
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: {
+        if (!product_id) {
+            console.error('[paddleActivate] Product ID is missing.');
+            return respondWith({
+                success: false,
+                error: 'Product ID is required'
+            });
+        }
+
+        return respondWith({
             success: true,
             response: {
                 product_id,
-                activation_id: '',
+                activation_id: 'unique-activation-id', // example: generate or define an activation ID
                 type: 'activate',
-                expires: 1,
-                expiry_date: 1999999999999,
-            },
-            signature: '',
-        },
-    });
+                expires: 1, // Define based on your business logic
+                expiry_date: '2099-01-01T00:00:00Z', // Future date of expiry, change as required
+            }
+        });
+    } catch (error) {
+        console.error('[paddleActivate] Error processing the request:', error);
+        return respondWith({
+            success: false,
+            error: 'Error processing the request'
+        });
+    }
 }
 
+function respondWith(data) {
+    return ResponseDone({
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data), // Ensure the body is a string
+        status: data.success ? 200 : 400  // HTTP status based on success flag
+    });
+}
