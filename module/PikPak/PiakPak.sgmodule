@@ -7,4 +7,4 @@ hostname = %APPEND% access.mypikpak.com  # 增加 MITM 处理的域名，确保 
 
 [Rule]
 # 匹配并拦截特定的 URL 路径
-URL-REGEX,^https://access\.mypikpak\.com/access_controller/v1/area_accessible$,REJECT
+URL-REGEX,^https:\/\/access\.mypikpak\.com\/access_controller\/v1\/area_accessible$,REJECT
