@@ -21,6 +21,7 @@
             eligible_for_file_search_beta: true,
             eligible_for_ai: true,
             eligible_for_bext: true,
+            broken_raycast_client: true,
             stripe_subscription_current_period_end: 2746090662
         });
 
